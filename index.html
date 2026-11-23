@@ -1246,6 +1246,28 @@ em.nw{background:var(--acc);color:var(--accInk)}
 .dx-guild{display:flex;align-items:center;gap:12px;margin:2px 16px 12px;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,#2a0907,#120404);color:#ffd7d2;cursor:pointer;border:1px solid #5a1610}
 .dx-guild i{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:#3a0d0a;color:#ff6b5e;flex:none;position:relative}
 .dx-guild b{font-size:14px;display:block}.dx-guild small{font-size:11px;opacity:.75}
+/* ── 마작 상대 고르기 ── */
+#arcadeApp.arc-mjl{display:flex;flex-direction:column}
+.mjl{padding:0 14px 20px}
+.mjl-t{font-size:12px;color:var(--t2);margin:4px 2px 10px;line-height:1.5}
+.mjl-sel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.mjl-s{display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 4px;border-radius:16px;background:var(--s1);border:1.5px dashed var(--sep);color:var(--t2);font:inherit}
+.mjl-s.on{border:1.5px solid var(--acc);color:var(--t1)}
+.mjl-s i,.mjl-r>i{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--s2);color:#fff;font-style:normal;font-weight:800;position:relative;flex:none}
+.mjl-s b{font-size:12px}
+.mjl-act{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.mjl-act .cap{height:42px}
+.mjl-r{display:flex;align-items:center;gap:10px;padding:9px 12px;cursor:pointer;border-bottom:.5px solid var(--sep)}
+.mjl-r:last-child{border-bottom:0}
+.mjl-r.on{background:color-mix(in srgb,var(--acc) 14%,transparent)}
+.mjl-r>i{width:36px;height:36px}
+.mjl-i{flex:1;min-width:0}
+.mjl-i b{font-size:14px;display:block}.mjl-i b em{font-style:normal;font-size:10.5px;font-weight:700;color:var(--acc);margin-left:4px}
+.mjl-i small{font-size:11px;color:var(--t2);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mjl-lv{display:flex;align-items:center;flex:none}
+.mjl-lv button{background:none;border:0;padding:2px 1px;font-size:15px;color:color-mix(in srgb,var(--t2) 40%,transparent);cursor:pointer}
+.mjl-lv button.on{color:#ffcc00}
+.mjl-lv .mjl-rs{font-size:13px;color:var(--t2);margin-left:3px}
 /* ── 캐릭터 아이콘 ── */
 .u-g .mini .cico{position:static;width:78%;height:78%;filter:none}
 :has(>.cico):not(.face){position:relative}
@@ -4956,15 +4978,15 @@ function mvpHTML(){
 const MINI=()=>{SAVE.mini=SAVE.mini||{};return SAVE.mini};
 let arcadeView='hub';
 function renderArcade(){
-  const el=$('#arcadeApp');['hub','ms','sol','mj'].forEach(v=>el.classList.toggle('arc-'+v,v===arcadeView));
-  if(arcadeView==='ms')return renderMS();if(arcadeView==='sol')return renderSol();if(arcadeView==='mj')return renderMJ();
+  const el=$('#arcadeApp');['hub','ms','sol','mj'].forEach(v=>el.classList.toggle('arc-'+v,v===arcadeView));el.classList.remove('arc-mjl');
+  if(arcadeView==='ms')return renderMS();if(arcadeView==='sol')return renderSol();if(arcadeView==='mj')return MJ?renderMJ():renderMJLobby();
   const m=MINI();
   el.innerHTML=`<div class="sb-sp"></div><div class="ap-hd"><div><small>센터 휴게실 단말</small><h1>게임</h1></div></div><div class="scroll">
     <div class="arc-c" data-g="mj"><div class="arc-i" style="background:linear-gradient(145deg,#2f9e44,#0b3d1a)">🀄</div><div><b>작전실 마작</b><small>동료 3명과 리치 마작 · 동풍전</small><em>1위 ${m.mjFirst||0}회 · 화료 ${m.mjWins||0}회</em></div></div>
     <div class="arc-c" data-g="sol"><div class="arc-i" style="background:linear-gradient(145deg,#1d4ed8,#0b1a4d)">🂡</div><div><b>솔리테어</b><small>클론다이크 · 한 장씩 넘기기</small><em>승리 ${m.solWins||0}회${m.solBest?` · 최단 ${fmtSec(m.solBest)}`:''}</em></div></div>
     <div class="arc-c" data-g="ms"><div class="arc-i" style="background:linear-gradient(145deg,#8e8e93,#2c2c2e)">💣</div><div><b>지뢰찾기</b><small>9×9 · 지뢰 10개</small><em>클리어 ${m.msWins||0}회${m.msBest?` · 최고 ${fmtSec(m.msBest)}`:''}</em></div></div>
     <p class="note" style="text-align:center;margin-top:10px">작전 사이 쉬는 시간에 한 판씩. 마작을 같이 치면 동료 친밀도가 조금 올라요.</p></div>`;
-  el.querySelectorAll('[data-g]').forEach(c=>c.onclick=()=>{sfx('tap');arcadeView=c.dataset.g;if(arcadeView==='ms')msNew();if(arcadeView==='sol')solNew();if(arcadeView==='mj')mjNewMatch();renderArcade()});
+  el.querySelectorAll('[data-g]').forEach(c=>c.onclick=()=>{sfx('tap');arcadeView=c.dataset.g;if(arcadeView==='ms')msNew();if(arcadeView==='sol')solNew();if(arcadeView==='mj')MJ=null;renderArcade()});
 }
 const fmtSec=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
 const arcBack=()=>'<span></span>';
@@ -5212,10 +5234,82 @@ const MJ_LINES={
   yujin:{pon:'펑, 흘러가는 대로.',chi:'치할게요.',kan:'깡이에요.',riichi:'리치. 물결이 왔어요.',ron:'론이에요.',tsumo:'쯔모. 물 흐르듯.',lose:'파도에 휩쓸렸네요.'},
   dogyeom:{pon:'펑할게요.',chi:'치할게요.',kan:'깡이요.',riichi:'리치할게요. 조심하세요.',ron:'론… 아파도 참아요.',tsumo:'쯔모예요.',lose:'괜찮아요, 안 아파요.'},
 };
-let MJ=null;
+/* ── 마작 실력 설정 ── */
+const MJ_STYLE={
+  atk:{n:'공격형',d:'리치를 망설이지 않고 밀어붙인다'},
+  def:{n:'수비형',d:'누가 리치하면 바로 안전패를 버린다'},
+  spd:{n:'속공형',d:'울어서라도 빨리 화료한다'},
+  val:{n:'타점형',d:'도라를 아끼고 큰 패를 노린다'},
+  bal:{n:'균형형',d:'공격과 수비의 판단이 정확하다'},
+  new:{n:'초보',d:'규칙은 아는데 실수가 잦다'},
+};
+const MJ_PROF={
+  haeon:[4,'def','신중하게 기다리다 확실할 때만 친다'],doyun:[3,'atk','리치부터 걸고 본다. 그리고 자주 쏘인다'],
+  ian:[4,'bal','계산이 정확하다. 표정 변화가 없다'],sein:[1,'new','패 이름을 아직 헷갈린다'],
+  roun:[4,'def','차를 마시며 느긋하게 접는다'],seoha:[5,'bal','원칙대로 친다. 실수가 거의 없다'],
+  taesik:[3,'def','말없이 안전패만 버린다'],yujin:[3,'bal','흐름을 읽고 무리하지 않는다'],
+  eunbyeol:[2,'spd','울고 또 운다. 빨리 끝내는 게 목표'],dogyeom:[2,'def','남이 쏘일까 봐 걱정하며 친다'],
+  haram:[4,'val','무심한 얼굴로 만관을 만든다'],taeo:[5,'val','몇 수 앞을 보고 패를 짠다'],
+  jaeha:[3,'def','패 섞는 소리로 텐파이를 눈치챈다'],minhyuk:[2,'atk','힘으로 친다. 수비라는 개념이 없다'],
+  haneul:[2,'spd','즉흥적으로 울어 버린다'],seol:[3,'atk','리치 선언 목소리가 제일 크다'],
+  seojin:[5,'def','18년 휴게실 마작 경력. 절대 쏘이지 않는다'],yuri:[3,'bal','텐파이가 되면 표정에 다 드러난다'],
+  shinwoo:[2,'new','룰을 잘 몰라서 오히려 읽히지 않는다'],yuna:[3,'bal','웃으면서 친다. 진짜 기분은 알 수 없다'],
+  sion:[4,'def','조용히 다마텐으로 기다린다'],mir:[1,'new','패를 버릴 때마다 질문한다'],
+  jiho:[2,'atk','번쩍이는 손을 좋아한다'],rion:[4,'def','본부를 지키듯 점수를 지킨다'],
+  hana:[1,'new','화료하면 노래를 부른다'],mujin:[5,'val','장기도 마작도 수십 년 짬밥이다'],
+  dain:[4,'val','확률표를 머릿속에 넣고 친다'],ohwa:[3,'def','다친 사람이 없게 조심스럽게 친다'],
+};
+const mjLv=c=>{const o=(MINI().mjSkill||{})[c];return o||((MJ_PROF[c]||[3])[0])};
+const mjStyle=c=>(MJ_PROF[c]||[3,'bal'])[1];
+const mjSeatStyle=q=>{const c=MJ.seats[q];return {lv:mjLv(c),st:mjStyle(c)}};
+Object.assign(MJ_LINES,{
+  haram:{pon:'펑.',chi:'치.',kan:'깡. 차갑게.',riichi:'리치. 얼려 두죠.',ron:'론. 식었네요.',tsumo:'쯔모.',lose:'…녹았네.'},
+  taeo:{pon:'펑. 계산대로예요.',chi:'치.',kan:'깡. 판이 바뀌죠.',riichi:'리치. 읽어 보세요.',ron:'론. 체크메이트.',tsumo:'쯔모. 예상했어요.',lose:'흥미로운 수였어요.'},
+  jaeha:{pon:'…펑.',chi:'치.',kan:'깡.',riichi:'…리치.',ron:'…론. 소리로 알았어요.',tsumo:'쯔모.',lose:'…들렸는데.'},
+  minhyuk:{pon:'펑!!',chi:'치!!',kan:'깡!! 근육 깡!',riichi:'리치!! 밀어붙입니다!',ron:'론!! 하하!',tsumo:'쯔모!!! 하체의 힘!',lose:'으악! 쏘였습니다!'},
+  haneul:{pon:'펑~',chi:'치ㅋㅋ',kan:'깡! 날아오른다~',riichi:'리치! 이륙!',ron:'론! 급강하~',tsumo:'쯔모ㅋㅋ 착륙 성공',lose:'추락했네요ㅋㅋ'},
+  seol:{pon:'펑!',chi:'치.',kan:'깡!!',riichi:'리치!!!',ron:'론! 앙코르는 없어요.',tsumo:'쯔모! 소리 질러!',lose:'아 망했다.'},
+  seojin:{pon:'펑이야.',chi:'치 하지.',kan:'깡이다.',riichi:'리치. 아저씨가 간다.',ron:'론. 하하, 미안하네.',tsumo:'쯔모. 18년 짬이야.',lose:'허, 아저씨가 쏘였네.'},
+  yuri:{pon:'펑이요.',chi:'치할게요.',kan:'깡이에요.',riichi:'리치. 솔직히 좋은 패예요.',ron:'론이에요. 거짓말 아니에요.',tsumo:'쯔모. 진짜예요.',lose:'…표정에 나왔나 봐요.'},
+  shinwoo:{pon:'펑? 이거 맞죠?ㅎㅎ',chi:'치~',kan:'깡? 해도 돼요?',riichi:'리치ㅎㅎ 아마도요',ron:'론! 어 이거 되는 거죠?!',tsumo:'쯔모ㅎㅎ 운이 좋았어요',lose:'앗 제가 쏘였어요ㅎㅎ'},
+  yuna:{pon:'펑 ☀',chi:'치~',kan:'깡이에요 ☀',riichi:'리치! 웃으면서 기다릴게요',ron:'론 ☀ 미안해요~',tsumo:'쯔모! 오늘 맑음이에요',lose:'흐림이네요…'},
+  sion:{pon:'펑.',chi:'치.',kan:'깡.',riichi:'리치.',ron:'론.',tsumo:'쯔모.',lose:'…아.'},
+  mir:{pon:'펑! 이거 맞죠?!',chi:'치! 질문은 나중에!',kan:'깡!! 처음이에요!',riichi:'리, 리치! 노트에 적어야지!',ron:'론!! 진짜요?!',tsumo:'쯔모!! 선배님들 봤어요?!',lose:'으아 제가 쏘였어요! 왜요?!'},
+  jiho:{pon:'펑! 번쩍!',chi:'치~',kan:'깡! 눈부시죠?',riichi:'리치! 반짝반짝!',ron:'론! 섬광!',tsumo:'쯔모! 사진 찍어 주세요!',lose:'눈앞이 하얘졌어요ㅠㅠ'},
+  rion:{pon:'펑.',chi:'치.',kan:'깡.',riichi:'리치. 지켜 보겠습니다.',ron:'론입니다.',tsumo:'쯔모입니다.',lose:'…방어 실패입니다.'},
+  hana:{pon:'펑 🎵',chi:'치~',kan:'깡!',riichi:'리치! 두근두근 🎵',ron:'론이에요! 🎵🎵',tsumo:'쯔모! 노래 부를게요!',lose:'으앙 쏘였어요ㅠㅠ'},
+  mujin:{pon:'펑.',chi:'치지.',kan:'깡이다.',riichi:'리치. 늙은이 손 조심해라.',ron:'론이다.',tsumo:'쯔모. 아직 안 녹슬었군.',lose:'허. 젊은 것들이.'},
+  dain:{pon:'펑. 기댓값이 높아요.',chi:'치.',kan:'깡.',riichi:'리치. 대기 확률 62%.',ron:'론. 계산대로예요.',tsumo:'쯔모. 확률이 이겼네요.',lose:'…표본 하나 추가.'},
+  ohwa:{pon:'펑이에요.',chi:'치할게요.',kan:'깡이에요.',riichi:'리치. 조심하세요.',ron:'론이에요. 아프진 않죠?',tsumo:'쯔모예요.',lose:'아, 제가 쏘였네요.'},
+});
+const mjAvailable=()=>Object.keys(MJ_LINES).filter(c=>CHARS[c]&&(!CHARS[c].join||SAVE.seen['intro-'+c])&&(!CHARS[c].card||isOwned(CHARS[c].card)));
+let MJ_PICK=[];
+function renderMJLobby(){
+  const el=$('#arcadeApp');el.classList.remove('arc-mj');el.classList.add('arc-mjl');
+  const list=mjAvailable(),stars=n=>'★'.repeat(n)+'☆'.repeat(5-n);
+  MJ_PICK=MJ_PICK.filter(c=>list.includes(c));
+  el.innerHTML=`<div class="sb-sp"></div><div class="chat-hd arc-hd">${arcBack()}<b>작전실 마작</b><span></span></div>
+    <div class="scroll mjl">
+      <p class="mjl-t">상대 3명을 고르세요. 별을 누르면 실력을 바꿀 수 있어요.</p>
+      <div class="mjl-sel">${[0,1,2].map(i=>{const c=MJ_PICK[i];return c?`<button class="mjl-s on" data-un="${c}"><i style="background:${CHARS[c].bg}">${CHARS[c].av}</i><b>${CHARS[c].n}</b></button>`:`<button class="mjl-s"><i>?</i><b>빈자리</b></button>`}).join('')}</div>
+      <div class="mjl-act"><button class="cap sec" id="mjRand">무작위로 채우기</button><button class="cap pri" id="mjGo" ${MJ_PICK.length===3?'':'disabled'}>대국 시작</button></div>
+      <div class="group">${list.map(c=>{const ch=CHARS[c],lv=mjLv(c),st=MJ_STYLE[mjStyle(c)],cust=(MINI().mjSkill||{})[c]!=null;
+        return `<div class="mjl-r ${MJ_PICK.includes(c)?'on':''}" data-c="${c}"><i style="background:${ch.bg}">${ch.av}</i><div class="mjl-i"><b>${ch.n} <em>${st.n}</em></b><small>${(MJ_PROF[c]||[])[2]||st.d}</small></div>
+          <div class="mjl-lv">${[1,2,3,4,5].map(n=>`<button data-lv="${n}" data-c="${c}" class="${n<=lv?'on':''}">★</button>`).join('')}${cust?`<button class="mjl-rs" data-rs="${c}" title="기본값">↺</button>`:''}</div></div>`}).join('')}</div>
+      <p class="mjl-t" style="margin-top:10px">★1 실수가 잦음 · ★3 보통 · ★5 거의 실수하지 않고 위험한 패를 읽음</p>
+    </div>`;
+  const R=()=>{sfx('tap');renderMJLobby()};
+  el.querySelectorAll('.mjl-r').forEach(r=>r.onclick=e=>{if(e.target.closest('.mjl-lv'))return;const c=r.dataset.c;if(MJ_PICK.includes(c))MJ_PICK=MJ_PICK.filter(x=>x!==c);else if(MJ_PICK.length<3)MJ_PICK.push(c);else{MJ_PICK.shift();MJ_PICK.push(c)}R()});
+  el.querySelectorAll('[data-un]').forEach(b=>b.onclick=()=>{MJ_PICK=MJ_PICK.filter(x=>x!==b.dataset.un);R()});
+  el.querySelectorAll('[data-lv]').forEach(b=>b.onclick=()=>{const m=MINI();m.mjSkill=m.mjSkill||{};const c=b.dataset.c,n=+b.dataset.lv;if(n===(MJ_PROF[c]||[3])[0])delete m.mjSkill[c];else m.mjSkill[c]=n;save();R()});
+  el.querySelectorAll('[data-rs]').forEach(b=>b.onclick=()=>{delete MINI().mjSkill[b.dataset.rs];save();R()});
+  $('#mjRand').onclick=()=>{const rest=shuffle(list.filter(c=>!MJ_PICK.includes(c)));while(MJ_PICK.length<3&&rest.length)MJ_PICK.push(rest.pop());R()};
+  $('#mjGo').onclick=()=>{if(MJ_PICK.length<3)return;sfx('tap');mjNewMatch([...MJ_PICK]);el.classList.remove('arc-mjl');el.classList.add('arc-mj');renderMJ()};
+}
+let MJ=null,MJ_LAST=null;
 const WIND='東南西北';
-function mjNewMatch(){
-  const pool=Object.keys(MJ_LINES);shuffle(pool);
+function mjNewMatch(seats){
+  const pool=seats||shuffle(mjAvailable()).slice(0,3);MJ_LAST=pool;
   MJ={seats:['me',...pool.slice(0,3)],scores:[25000,25000,25000,25000],dealer:0,honba:0,sticks:0,rot:0,handNo:0,say:{}};mjStartHand();
 }
 function mjStartHand(){
@@ -5340,12 +5434,22 @@ function mjKan(o){
 }
 // NPC
 function yakuhaiK(q,k){return k>=31||k===seatW(q)||k===27}
+function mjWantRiichi(p){
+  const {lv,st}=mjSeatStyle(p),threat=[0,1,2,3].some(x=>x!==p&&MJ.riichi[x]);
+  if(st==='def')return !threat||lv<=2;
+  if(st==='bal')return !threat||Math.random()<.5;
+  return true;
+}
 function npcWantsPon(q,k){
-  if(yakuhaiK(q,k))return true;
+  const {lv,st}=mjSeatStyle(q);
+  if(st==='new'&&Math.random()<.5)return false;
+  if(yakuhaiK(q,k))return !(st==='def'&&[0,1,2,3].some(x=>x!==q&&MJ.riichi[x]));
+  if(st==='spd'&&MJ.melds[q].length===0&&cnt34(MJ.hands[q]).some((n,j)=>n>=2&&yakuhaiK(q,j))){const c=cnt34(MJ.hands[q]),s0=shanten(c,0);c[k]-=2;return shanten(c,1)<s0}
   const open=MJ.melds[q].some(m=>m.type!=='ankan');if(!open)return false;
   const h=MJ.hands[q],c=cnt34(h),s0=shanten(c,MJ.melds[q].length);c[k]-=2;const s1=shanten(c,MJ.melds[q].length+1);return s1<s0;
 }
 function npcChi(q,id,opts){
+  if(mjSeatStyle(q).st==='new'&&Math.random()<.5)return null;
   if(!opts.length||!MJ.melds[q].some(m=>m.type!=='ankan'&&yakuhaiK(q,K(m.ids[0]))||m.type==='chi'))return null;
   const h=MJ.hands[q],s0=shanten(cnt34(h),MJ.melds[q].length);
   for(const o of opts){const r=h.filter(x=>!o.includes(x));if(shanten(cnt34(r),MJ.melds[q].length+1)<s0)return o}
@@ -5353,18 +5457,22 @@ function npcChi(q,id,opts){
 }
 function visibleCnt(){const c=Array(34).fill(0);for(let p=0;p<4;p++){MJ.disc[p].forEach(d=>c[K(d.id)]++);MJ.melds[p].forEach(m=>m.ids.forEach(x=>c[K(x)]++))}for(let i=0;i<MJ.doraN;i++)c[K(MJ.dead[4+2*i])]++;return c}
 function mjAiPick(q){
-  const h=MJ.hands[q],mn=MJ.melds[q].length,c=cnt34(h),vis=visibleCnt(),dk=doraKinds();
+  const h=MJ.hands[q],mn=MJ.melds[q].length,c=cnt34(h),vis=visibleCnt(),dk=doraKinds(),{lv,st}=mjSeatStyle(q);
   const threat=[0,1,2,3].filter(x=>x!==q&&MJ.riichi[x]);
   const kinds=[...new Set(h.map(K))];const sc={};let minS=99;
   for(const k of kinds){c[k]--;sc[k]=shanten(c,mn);c[k]++;minS=Math.min(minS,sc[k])}
+  const foldAt=st==='def'?1:st==='atk'?2:st==='new'?99:st==='spd'?2:1;
+  const defend=threat.length&&(minS>=foldAt||(st==='def'&&lv>=4&&minS>=0&&MJ.wall.length<30))&&!(lv<=2&&Math.random()<.5);
   let best=null,bv=-1e9;
   for(const k of kinds){
     let v=-sc[k]*1000;
-    if(sc[k]===minS){c[k]--;let uk=0;for(let j=0;j<34;j++){if(c[j]+vis[j]>=4)continue;c[j]++;if(shanten(c,mn)<sc[k])uk+=4-c[j]+1-vis[j];c[j]--}c[k]++;v+=uk*10}
-    if(isHonor(k)&&c[k]===1)v+=15;if(isTerm(k))v+=5;if(dk.includes(k))v-=40;
-    if(threat.length&&minS>=1){const safe=threat.every(t=>MJ.disc[t].some(d=>K(d.id)===k));v+=safe?3000:(isHonor(k)&&vis[k]>=2?800:-200)}
+    if(sc[k]===minS&&lv>=3){c[k]--;let uk=0;for(let j=0;j<34;j++){if(c[j]+vis[j]>=4)continue;c[j]++;if(shanten(c,mn)<sc[k])uk+=4-c[j]+1-vis[j];c[j]--}c[k]++;v+=uk*10}
+    if(isHonor(k)&&c[k]===1)v+=15;if(isTerm(k))v+=5;if(dk.includes(k))v-=st==='val'?110:40;
+    if(defend){const safe=threat.every(t=>MJ.disc[t].some(d=>K(d.id)===k));v+=safe?3000:(isHonor(k)&&vis[k]>=2?(lv>=4?1500:800):(lv>=5&&!isHonor(k)&&threat.every(t=>MJ.disc[t].some(d=>{const x=K(d.id);return !isHonor(x)&&Math.floor(x/9)===Math.floor(k/9)&&Math.abs(x%9-k%9)===3}))?900:-200))}
     if(v>bv){bv=v;best=k}
   }
+  const err=[0,.35,.2,.1,.04,0][lv]||0;
+  if(Math.random()<err){const pool=lv<=1?kinds:kinds.filter(k=>sc[k]<=minS+1);if(pool.length)best=pool[Math.random()*pool.length|0]}
   const cand=h.filter(x=>K(x)===best);return h.indexOf(cand.find(x=>!isRed(x))??cand[0]);
 }
 function mjNpcTurn(p){
@@ -5374,7 +5482,7 @@ function mjNpcTurn(p){
   const c=cnt34(MJ.hands[p]);
   for(let k=27;k<34;k++)if(c[k]===4&&MJ.wall.length){const ids=MJ.hands[p].filter(x=>K(x)===k);ids.forEach(x=>MJ.hands[p].splice(MJ.hands[p].indexOf(x),1));MJ.melds[p].push({type:'ankan',ids});MJ.doraN++;MJ.anyCall=true;mjSay(p,'kan');mjDraw(p,true);return}
   const i=mjAiPick(p),ri=canRiichi(p);
-  mjDoDiscard(p,i,ri.includes(i));
+  mjDoDiscard(p,i,ri.includes(i)&&mjWantRiichi(p));
 }
 // 점수 지급
 function mjWin(w,from,id,r){
@@ -5463,7 +5571,7 @@ function renderMJ(){
   const rx=$('#mjRiichiX');if(rx)rx.onclick=()=>{MJ.riichiSel=false;renderMJ()};
   const sk=$('#mjSkip');if(sk)sk.onclick=()=>mjDiscard(MJ.hands[0].indexOf(MJ.drawn));
   const nx=$('#mjNext');if(nx)nx.onclick=()=>{sfx('tap');mjNext()};
-  const ag=$('#mjAgain');if(ag)ag.onclick=()=>{sfx('tap');mjNewMatch();renderMJ()};
+  const ag=$('#mjAgain');if(ag)ag.onclick=()=>{sfx('tap');mjNewMatch(MJ_LAST);renderMJ()};
 }
 
 /* ───────────── 책상 소품: 끌어서 옮기기 · 던지기 · 다시 올려 두기 ───────────── */
