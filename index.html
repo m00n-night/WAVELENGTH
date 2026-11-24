@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>파장 WAVELENGTH — 파장</title>
+<title>파장 WAVELENGTH — 센가버스 카드 배틀</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800;900&family=Do+Hyeon&family=Black+Han+Sans&family=Nanum+Gothic+Coding:wght@400;700&family=Nanum+Pen+Script&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
@@ -1095,6 +1095,89 @@ em.nw{background:var(--acc);color:var(--accInk)}
 #msNew{flex:none;height:46px;margin:10px 16px 0!important}
 .arc-hd{flex:none;min-height:44px}
 
+
+/* ── 휴게실 확장 ── */
+.arc-sec{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;font-weight:800;color:var(--t2);margin:16px 4px 8px}
+.arc-sec span{font-size:11px;font-weight:600;color:var(--t3)}
+.arc-c{position:relative}
+.arc-easy{position:absolute;top:12px;right:12px;font-size:10.5px;font-weight:800;padding:3px 8px;border-radius:99px;background:color-mix(in srgb,var(--grn) 20%,transparent);color:var(--grn)}
+.arc-day{padding:14px;border-radius:20px;background:linear-gradient(150deg,color-mix(in srgb,var(--acc) 22%,var(--s1)),var(--s1) 70%);margin-bottom:4px;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--acc) 25%,transparent)}
+.ad-hd{display:flex;justify-content:space-between;align-items:center}
+.ad-hd b{font-size:16px;font-weight:900}.ad-hd span{font-size:11px;font-weight:700;color:var(--acc)}
+.ad-xp{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:11.5px;color:var(--t2)}
+.ad-xp .xpbar{flex:1;margin:0}.ad-xp em{font-style:normal;font-weight:800;color:var(--t1);font-variant-numeric:tabular-nums}
+.ad-qh{font-size:12px;font-weight:800;margin:12px 0 6px;display:flex;justify-content:space-between}
+.ad-qh span{font-weight:600;color:var(--t3);font-size:10.5px}
+.ad-q{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;background:var(--s2);margin-top:5px}
+.ad-q i{width:20px;height:20px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--t3);display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:900;flex:none}
+.ad-q b{flex:1;font-size:13px;font-weight:600}
+.ad-q em{font-style:normal;font-size:11.5px;font-weight:800;color:var(--t2);font-variant-numeric:tabular-nums}
+.ad-q.ok i{background:var(--acc);color:var(--accInk);box-shadow:none}
+.ad-q.ok b{color:var(--t2);text-decoration:line-through}.ad-q.ok em{color:var(--acc)}
+.arc-how{border-radius:16px;background:var(--s1);padding:4px 12px}
+.arc-how div{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:.5px solid var(--sep)}
+.arc-how div:last-child{border:0}
+.arc-how i{font-style:normal;font-size:17px;width:22px;text-align:center}
+.arc-how b{flex:1;font-size:13px;font-weight:700}
+.arc-how em{font-style:normal;font-size:11.5px;color:var(--t2)}
+.arc-res{margin:10px 16px 0;padding:18px 16px 6px;border-radius:20px;background:var(--s1);text-align:center;animation:tuPop .35s}
+.arc-res>b{font-size:20px;font-weight:900;display:block}
+.arc-res>p{font-size:12.5px;color:var(--t2);margin:6px 0 12px}
+.cap.tu-go{flex:none!important;height:52px;margin:12px 16px 14px!important;width:auto!important}
+.arc-hd.row{flex-direction:row;align-items:center;padding:0 6px 8px}
+.arc-hd.row .dk-reset{margin-left:auto}
+/* 파장 튜닝 */
+.tu-wrap{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:0 0 4px}
+.tu-help{font-size:12.5px;line-height:1.55;color:var(--t2);text-align:center;padding:0 22px 14px;min-height:56px}
+.tu-help b{color:var(--acc)}
+.tu-svg{display:block;width:calc(100% - 32px);height:150px;margin:0 16px;border-radius:20px;background:radial-gradient(ellipse at 50% 50%,color-mix(in srgb,var(--acc) 12%,var(--s1)),var(--s1));touch-action:manipulation;cursor:pointer;transition:box-shadow .2s}
+.tu-svg path{fill:none;stroke-linecap:round}
+.tu-svg .tg{stroke:var(--t3);stroke-width:3;stroke-dasharray:6 6}
+.tu-svg .me{stroke:var(--acc);stroke-width:3.5;filter:drop-shadow(0 0 4px color-mix(in srgb,var(--acc) 70%,transparent))}
+.tu-svg.near{box-shadow:inset 0 0 0 2px var(--grn)}
+.tu-svg.near .me{stroke:var(--grn)}
+.tu-bar{position:relative;height:30px;margin:18px 24px 0;border-radius:15px;background:var(--s2)}
+.tu-zone{position:absolute;top:0;bottom:0;background:color-mix(in srgb,var(--grn) 35%,transparent);border-radius:8px}
+.tu-zone i{position:absolute;top:0;bottom:0;background:var(--grn);border-radius:6px;opacity:.85}
+.tu-ndl{position:absolute;top:-6px;bottom:-6px;width:4px;margin-left:-2px;border-radius:2px;background:var(--t1);box-shadow:0 0 8px rgba(255,255,255,.7)}
+.tu-j{text-align:center;font-size:30px;font-weight:900;letter-spacing:1px;margin-top:16px;height:40px}
+.tu-j.pf{color:var(--yel);animation:tuPop .4s}.tu-j.gr{color:var(--grn);animation:tuPop .4s}.tu-j.gd{color:#64d2ff;animation:tuPop .4s}.tu-j.ms{color:var(--red);animation:shk .35s}
+@keyframes tuPop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+/* 짝맞추기 */
+.pr-g{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 16px;flex:none}
+.pr-c{aspect-ratio:3/4;perspective:600px;padding:0}
+.pr-in{position:relative;width:100%;height:100%;transition:transform .35s cubic-bezier(.3,1.2,.5,1);transform-style:preserve-3d}
+.pr-c.up .pr-in{transform:rotateY(180deg)}
+.pr-b,.pr-f{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pr-b{background:linear-gradient(145deg,color-mix(in srgb,var(--acc) 70%,#000),color-mix(in srgb,var(--acc) 25%,#000));color:rgba(255,255,255,.55);font-weight:900;font-size:18px;letter-spacing:2px;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.15),0 3px 8px rgba(0,0,0,.3)}
+.pr-f{background:var(--s2);transform:rotateY(180deg);gap:6px;box-shadow:0 3px 8px rgba(0,0,0,.25)}
+.pr-f span{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800}
+.pr-f small{font-size:11px;font-weight:700;color:var(--t2)}
+.pr-c.ok .pr-f{box-shadow:inset 0 0 0 2px var(--grn)}
+.pr-c.ok .pr-f small{color:var(--grn)}
+/* 균열 봉쇄 */
+.rf-tm{height:6px;margin:0 18px 14px;border-radius:3px;background:var(--s2);overflow:hidden;flex:none}
+.rf-tm i{display:block;height:100%;background:linear-gradient(90deg,#bf5af2,#ff375f);border-radius:3px;transition:width .1s linear}
+.rf-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 22px;flex:none}
+.rf-g.shk{animation:shk .35s}
+.rf-g button{aspect-ratio:1;border-radius:22px;background:radial-gradient(circle at 50% 40%,var(--s2),var(--s1));box-shadow:inset 0 -3px 0 rgba(0,0,0,.25);display:grid;place-items:center;touch-action:manipulation;user-select:none;-webkit-user-select:none;position:relative;overflow:hidden}
+.rf-g button.rf-r i{width:70%;height:70%;border-radius:50%;background:conic-gradient(from 0deg,#bf5af2,#5e5ce6,#ff375f,#bf5af2);mask:radial-gradient(circle,transparent 22%,#000 24%);-webkit-mask:radial-gradient(circle,transparent 22%,#000 24%);animation:rfSpin .8s linear infinite,rfIn .18s ease-out;box-shadow:0 0 22px #bf5af2}
+.rf-g button.rf-r{background:radial-gradient(circle,#2a0b4d,var(--s1))}
+.rf-g button.rf-c span{width:62%;height:62%;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;animation:rfIn .18s ease-out}
+.rf-g button em{font-style:normal;font-size:24px;font-weight:900;color:var(--grn);animation:tuPop .25s}
+.rf-g button em.m{color:var(--red)}
+.rf-g button.fx-bad{background:color-mix(in srgb,var(--red) 30%,var(--s1))}
+@keyframes rfSpin{to{transform:rotate(360deg)}}
+@keyframes rfIn{from{transform:scale(.2);opacity:0}}
+/* 2048 */
+.gz-b{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:8px;margin:0 16px;border-radius:18px;background:var(--s1);touch-action:none;user-select:none;-webkit-user-select:none;flex:none;cursor:grab}
+.gz-t{aspect-ratio:1;border-radius:12px;display:grid;place-items:center;font-weight:900;font-variant-numeric:tabular-nums;transition:background .15s}
+.gz-t.e{background:var(--s2)}
+.gz-t.nw{animation:rfIn .18s ease-out}
+.gz-t.mg{animation:tuPop .22s}
+.gz-ov{position:absolute;inset:0;border-radius:18px;background:color-mix(in srgb,var(--s0) 75%,transparent);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;flex-direction:column;justify-content:center}
+.gz-ov .arc-res{margin:0 14px}
+:root[data-theme=frost] .gz-t.e{background:#e3e7ee}
 /* ── 시스템 바 영역 확보 · 최근 앱 · 뒤로 ── */
 .app{bottom:28px}
 .galaxy .app{bottom:48px}
@@ -1735,7 +1818,8 @@ const nm=t=>typeof t==='string'?t.replace(/지휘관님/g,callName()+'님'):t;
 const escH=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const needXp=l=>100+50*l;
 function lvlInfo(){const l=SAVE.lvl;return{lvl:l,xp:SAVE.xp,need:needXp(l),title:l>=8?'S급 지휘관':l>=5?'A급 지휘관':l>=3?'B급 지휘관':'C급 지휘관'}}
-function addXp(n){SAVE.xp+=n;while(SAVE.xp>=needXp(SAVE.lvl)){SAVE.xp-=needXp(SAVE.lvl);SAVE.lvl++}}
+function addXp(n){n=+n||0;SAVE.xp+=n;while(SAVE.xp>=needXp(SAVE.lvl)){SAVE.xp-=needXp(SAVE.lvl);SAVE.lvl++}}
+const ACH_XP=20,TALK_XP=10;
 
 /* ───────────── 효과음 (WebAudio 합성) ───────────── */
 let AC=null;
@@ -2484,7 +2568,7 @@ function goBack(){
   if(curApp==='msg'&&openThread){renderMsg();return}
   if(curApp==='game'&&G&&G.mode){cancelMode();return}
   if(curApp==='game'&&$('#deckView').classList.contains('on')){showSub('lobby');renderLobby();return}
-  if(curApp==='arcade'&&arcadeView!=='hub'){arcadeView='hub';clearInterval(msT);clearInterval(solT);renderArcade();return}
+  if(curApp==='arcade'&&arcadeView!=='hub'){arcadeView='hub';arcStopAll();renderArcade();return}
   if(curApp)goHome();
 }
 function showSub(n){$('#deckView').classList.toggle('on',n==='deck');$('#lobbyView').classList.toggle('on',n==='lobby');$('#battleView').classList.toggle('on',n==='battle')}
@@ -4519,8 +4603,9 @@ for(const c of CREW)ACH.push({g:'동료',id:'crew-'+c,n:`${CHARS[c].n}의 신뢰
 const titleOf=()=>{const a=ACH.find(x=>x.id===SAVE.title&&(SAVE.ach||{})[x.id]);return a?a.t:''};
 function progressCheck(){
   SAVE.ach=SAVE.ach||{};SAVE.unlocked=SAVE.unlocked||{};let ch=false;
-  for(const a of ACH)if(!SAVE.ach[a.id]&&a.ok()){SAVE.ach[a.id]=Date.now();ch=true;
-    setTimeout(()=>notify('업적 달성',`<b>${a.n}</b> · 칭호 「${a.t}」 획득`,'bond'),600)}
+  for(const a of ACH)if(!SAVE.ach[a.id]&&a.ok()){SAVE.ach[a.id]=Date.now();ch=true;addXp(ACH_XP);
+    setTimeout(()=>notify('업적 달성',`<b>${a.n}</b> · 칭호 「${a.t}」 획득 · 경험치 +${ACH_XP}`,'bond'),600)}
+  if(typeof talkXpCheck==='function'&&talkXpCheck())ch=true;
   for(const u of UNLOCKS)if(!SAVE.unlocked[u.k]&&u.ok()){SAVE.unlocked[u.k]=Date.now();ch=true;
     setTimeout(()=>notify('새 카드 해금',`<b>${CARDS[u.k].name}</b> · 덱 편성에서 넣을 수 있어요`,'center',()=>{openApp('game');setTimeout(openDeck,300)}),1400)}
   if(ch){save();propSig=''}
@@ -4978,19 +5063,27 @@ function mvpHTML(){
 const MINI=()=>{SAVE.mini=SAVE.mini||{};return SAVE.mini};
 let arcadeView='hub';
 function renderArcade(){
-  const el=$('#arcadeApp');['hub','ms','sol','mj'].forEach(v=>el.classList.toggle('arc-'+v,v===arcadeView));el.classList.remove('arc-mjl');
+  const el=$('#arcadeApp');['hub','ms','sol','mj','tune','pair','rift','g2048'].forEach(v=>el.classList.toggle('arc-'+v,v===arcadeView));el.classList.remove('arc-mjl');
+  if(arcadeView==='tune')return renderTune();if(arcadeView==='pair')return renderPair();if(arcadeView==='rift')return renderRift();if(arcadeView==='g2048')return renderG2048();
   if(arcadeView==='ms')return renderMS();if(arcadeView==='sol')return renderSol();if(arcadeView==='mj')return MJ?renderMJ():renderMJLobby();
   const m=MINI();
   el.innerHTML=`<div class="sb-sp"></div><div class="ap-hd"><div><small>센터 휴게실 단말</small><h1>게임</h1></div></div><div class="scroll">
+    ${arcDailyHTML()}
+    <div class="arc-sec">가볍게 한 판 <span>1~3분</span></div>
+    <div class="arc-c" data-g="tune"><div class="arc-i" style="background:linear-gradient(145deg,#30d5c8,#0a4a6b)">〰️</div><div><b>파장 튜닝</b><small>움직이는 파장을 목표 구간에 멈추기 · 탭 한 번</small><em>${m.tuneBest?`최고 ${m.tuneBest}점 · `:''}플레이 ${m.tunePlays||0}회</em></div><span class="arc-easy">쉬움</span></div>
+    <div class="arc-c" data-g="pair"><div class="arc-i" style="background:linear-gradient(145deg,#f9a8d4,#7a1fa2)">🃏</div><div><b>동료 짝맞추기</b><small>뒤집힌 동료 카드 8쌍 찾기</small><em>클리어 ${m.pairWins||0}회${m.pairBest?` · 최소 ${m.pairBest}번`:''}</em></div><span class="arc-easy">쉬움</span></div>
+    <div class="arc-c" data-g="rift"><div class="arc-i" style="background:linear-gradient(145deg,#bf5af2,#2a0b4d)">🌀</div><div><b>균열 봉쇄</b><small>30초 동안 열리는 균열 터치 · 동료는 피하기</small><em>${m.riftBest?`최고 ${m.riftBest}점 · `:''}플레이 ${m.riftPlays||0}회</em></div><span class="arc-easy">쉬움</span></div>
+    <div class="arc-c" data-g="g2048"><div class="arc-i" style="background:linear-gradient(145deg,#ffd60a,#c2410c)">⚡</div><div><b>파장 증폭 2048</b><small>밀어서 같은 숫자 합치기 · 언제든 정산 가능</small><em>${m.g2048Best?`최고 ${m.g2048Best}점 · 최대 ${m.g2048Tile}`:'기록 없음'}</em></div></div>
+    <div class="arc-sec">느긋하게 <span>두뇌 게임</span></div>
     <div class="arc-c" data-g="mj"><div class="arc-i" style="background:linear-gradient(145deg,#2f9e44,#0b3d1a)">🀄</div><div><b>작전실 마작</b><small>동료 3명과 리치 마작 · 동풍전</small><em>1위 ${m.mjFirst||0}회 · 화료 ${m.mjWins||0}회</em></div></div>
     <div class="arc-c" data-g="sol"><div class="arc-i" style="background:linear-gradient(145deg,#1d4ed8,#0b1a4d)">🂡</div><div><b>솔리테어</b><small>클론다이크 · 한 장씩 넘기기</small><em>승리 ${m.solWins||0}회${m.solBest?` · 최단 ${fmtSec(m.solBest)}`:''}</em></div></div>
     <div class="arc-c" data-g="ms"><div class="arc-i" style="background:linear-gradient(145deg,#8e8e93,#2c2c2e)">💣</div><div><b>지뢰찾기</b><small>9×9 · 지뢰 10개</small><em>클리어 ${m.msWins||0}회${m.msBest?` · 최고 ${fmtSec(m.msBest)}`:''}</em></div></div>
-    <p class="note" style="text-align:center;margin-top:10px">작전 사이 쉬는 시간에 한 판씩. 마작을 같이 치면 동료 친밀도가 조금 올라요.</p></div>`;
-  el.querySelectorAll('[data-g]').forEach(c=>c.onclick=()=>{sfx('tap');arcadeView=c.dataset.g;if(arcadeView==='ms')msNew();if(arcadeView==='sol')solNew();if(arcadeView==='mj')MJ=null;renderArcade()});
+    ${arcHowHTML()}<p class="note" style="text-align:center;margin-top:10px">작전 사이 쉬는 시간에 한 판씩. 마작을 같이 치면 동료 친밀도가 조금 올라요.</p></div>`;
+  el.querySelectorAll('[data-g]').forEach(c=>c.onclick=()=>{sfx('tap');arcadeView=c.dataset.g;if(arcadeView==='ms')msNew();if(arcadeView==='sol')solNew();if(arcadeView==='mj')MJ=null;if(arcadeView==='tune')tuneNew();if(arcadeView==='pair')pairNew();if(arcadeView==='rift')riftNew();if(arcadeView==='g2048'&&(!GZ||GZ.claimed||GZ.over))g2048New();renderArcade()});
 }
 const fmtSec=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
 const arcBack=()=>'<span></span>';
-function bindArcBack(){const b=$('#arcBack');if(b)b.onclick=()=>{sfx('tap');arcadeView='hub';clearInterval(msT);clearInterval(solT);renderArcade()}}
+function bindArcBack(){const b=$('#arcBack');if(b)b.onclick=()=>{sfx('tap');arcadeView='hub';arcStopAll();renderArcade()}}
 
 // ── 지뢰찾기
 let MSW=null,msT=null;
@@ -5004,12 +5097,12 @@ function msPlace(safe){
 }
 function msOpen(i){
   const c=MSW.cells[i];if(c.o||c.f)return;c.o=1;
-  if(c.m){MSW.over=-1;clearInterval(msT);MSW.cells.forEach(x=>{if(x.m)x.o=1});sfx('destroy');return}
+  if(c.m){MSW.over=-1;clearInterval(msT);MSW.cells.forEach(x=>{if(x.m)x.o=1});sfx('destroy');arcReward('ms',5,'지뢰찾기 참가');return}
   if(!c.c)MSW.nb(i).forEach(msOpen);
 }
 function msCheck(){
   if(MSW.over)return;
-  if(MSW.cells.every(c=>c.m||c.o)){MSW.over=1;clearInterval(msT);const s=(Date.now()-MSW.t0)/1000|0,m=MINI();m.msWins=(m.msWins||0)+1;if(!m.msBest||s<m.msBest)m.msBest=s;save();sfx('win');progressCheck()}
+  if(MSW.cells.every(c=>c.m||c.o)){MSW.over=1;clearInterval(msT);const s=(Date.now()-MSW.t0)/1000|0,m=MINI();m.msWins=(m.msWins||0)+1;if(!m.msBest||s<m.msBest)m.msBest=s;save();sfx('win');arcReward('ms',40,'지뢰찾기 클리어')}
 }
 function renderMS(){
   const el=$('#arcadeApp'),fl=MSW.cells.filter(c=>c.f).length;
@@ -5066,7 +5159,7 @@ function solMoveTo(dest,i){
 function solAutoFound(){ // 선택 카드를 기반 자리로 바로
   const p=solPick();if(!p||p.length!==1)return false;const c=p[0];if(!solCanFound(c))return false;solRemove();SOL.found[c.s].push(c);SOL.moves++;sfx('card');solSel=null;solWinCheck();return true;
 }
-function solWinCheck(){if(SOL.found.every(f=>f.length===13)&&!SOL.won){SOL.won=true;clearInterval(solT);const s=(Date.now()-SOL.t0)/1000|0,m=MINI();m.solWins=(m.solWins||0)+1;if(!m.solBest||s<m.solBest)m.solBest=s;save();sfx('win');progressCheck()}}
+function solWinCheck(){if(SOL.found.every(f=>f.length===13)&&!SOL.won){SOL.won=true;clearInterval(solT);const s=(Date.now()-SOL.t0)/1000|0,m=MINI();m.solWins=(m.solWins||0)+1;if(!m.solBest||s<m.solBest)m.solBest=s;save();sfx('win');arcReward('sol',60,'솔리테어 클리어')}}
 function solAutoAll(){let moved=true;while(moved){moved=false;for(let i=0;i<7;i++){const t=SOL.tab[i];if(t.length){solSel={from:'t',i,k:t.length-1};if(solAutoFound())moved=true}}if(SOL.waste.length){solSel={from:'w'};if(solAutoFound())moved=true}}solSel=null}
 function renderSol(){
   const el=$('#arcadeApp'),canAuto=!SOL.stock.length&&!SOL.waste.length&&SOL.tab.every(t=>t.every(c=>c.up))&&!SOL.won;
@@ -5509,7 +5602,7 @@ function mjNext(){
   if(MJ.rot>=4||MJ.scores.some(s=>s<0)||MJ.handNo>=10){
     const rank=[0,1,2,3].sort((a,b)=>MJ.scores[b]-MJ.scores[a]);
     if(rank[0]===0){const m=MINI();m.mjFirst=(m.mjFirst||0)+1}
-    const aff={};MJ.seats.slice(1).forEach(c=>aff[c]=1);addAff(aff);save();progressCheck();
+    const aff={};MJ.seats.slice(1).forEach(c=>aff[c]=1);addAff(aff);save();arcReward('mj',rank[0]===0?90:40,rank[0]===0?'마작 1위':'마작 동풍전 완주');
     MJ.final=rank;MJ.phase='final';rMJ();return;
   }
   mjStartHand();
@@ -5823,6 +5916,289 @@ $('#live').onclick=()=>{if(G&&G.inBattle){closePanel();if(overlayMode==='lock')u
 SAVE=Object.assign(fresh(),SAVE);messengerState();seedChats();if(!chatOf('squad').length)deliver(CONV_BY_ID['seed-squad'],{},true);
 applyTheme();fit();tick();applyDesk();
 newGame();renderHome();render();SAVE.registered?showLock():showRegister();
+
+/* ───────────── 휴게실 확장: 경험치 · 오늘의 임무 · 새 미니게임 ───────────── */
+var ARC_CAP=500,ARC_FIRST=30,ARC_QXP=50,ARC_ALLXP=50;
+var ARC_QUESTS={
+  play3:{t:'휴게실 게임 3판 하기',g:3,v:d=>d.plays},
+  two:{t:'서로 다른 게임 2종류 하기',g:2,v:d=>Object.keys(d.games).length},
+  perf:{t:'파장 튜닝 PERFECT 5번',g:5,v:d=>d.ev.perf||0},
+  tune6:{t:'파장 튜닝 600점 이상',g:600,v:d=>d.ev.tune||0},
+  pair:{t:'동료 짝맞추기 클리어',g:1,v:d=>d.games.pair||0},
+  pair18:{t:'짝맞추기 18번 안에 클리어',g:1,v:d=>d.ev.pairOk||0},
+  rift:{t:'균열 봉쇄 25점 이상',g:25,v:d=>d.ev.rift||0},
+  combo:{t:'균열 봉쇄 10콤보',g:10,v:d=>d.ev.combo||0},
+  t128:{t:'2048에서 128 타일 만들기',g:128,v:d=>d.ev.tile||0},
+};
+function arcDay(){const m=MINI(),t=ymd(seoulNow());if(!m.day||m.day.d!==t)m.day={d:t,xp:0,plays:0,games:{},ev:{},q:{},first:0,all:0};return m.day}
+function arcQuestIds(ds){
+  let h=0;for(const ch of ds)h=(h*31+ch.charCodeAt(0))>>>0;
+  const rnd=()=>{h=(h*1103515245+12345)>>>0;return h/4294967296};
+  const gen=['play3','two'],sp=['perf','tune6','pair','pair18','rift','combo','t128'];
+  const a=gen[rnd()*gen.length|0],pool=sp.slice(),out=[a];
+  while(out.length<3){const k=pool.splice(rnd()*pool.length|0,1)[0];
+    if((k==='pair'&&out.includes('pair18'))||(k==='pair18'&&out.includes('pair'))||(k==='perf'&&out.includes('tune6'))||(k==='tune6'&&out.includes('perf')))continue;out.push(k)}
+  return out;
+}
+function arcLvCheck(b){if(SAVE.lvl>b){const L=lvlInfo();setTimeout(()=>notify('진급',`지휘관 <b>Lv.${L.lvl}</b> 달성 · ${L.title}`,'bond'),400);try{propSig=''}catch(e){}}}
+function arcEv(k,v,max){const d=arcDay();d.ev[k]=max?Math.max(d.ev[k]||0,v):(d.ev[k]||0)+v}
+function arcQuestCheck(){
+  const d=arcDay(),ids=arcQuestIds(d.d),b=SAVE.lvl;let g=0;
+  for(const id of ids){const q=ARC_QUESTS[id];if(!d.q[id]&&q.v(d)>=q.g){d.q[id]=1;g+=ARC_QXP;notify('오늘의 휴게실 임무',`<b>${q.t}</b> 완료 · 경험치 +${ARC_QXP}`,'center')}}
+  if(!d.all&&ids.every(id=>d.q[id])){d.all=1;MINI().allEver=1;g+=ARC_ALLXP;notify('오늘의 임무 올클리어',`보너스 경험치 <b>+${ARC_ALLXP}</b>`,'bond')}
+  if(g){addXp(g);save();arcLvCheck(b)}
+  return g;
+}
+function arcReward(game,base,label){
+  const d=arcDay(),b=SAVE.lvl;d.plays++;d.games[game]=(d.games[game]||0)+1;
+  const xp=Math.max(0,Math.min(base,ARC_CAP-d.xp));d.xp+=xp;
+  let first=0;if(!d.first){d.first=1;first=ARC_FIRST}
+  const tot=xp+first;addXp(tot);save();
+  notify('휴게실 경험치',`<b>+${tot}</b> · ${label}${first?` (오늘 첫 판 +${first})`:''}${xp<base?' · 오늘 게임 경험치 한도 도달':''}`,'center');
+  const q=arcQuestCheck();arcLvCheck(b);progressCheck();
+  return {xp:tot,first,capped:xp<base,quest:q};
+}
+function talkXpCheck(){
+  let n;try{n=totalReplies()}catch(e){return false}
+  if(SAVE.talkXpN==null){SAVE.talkXpN=n;return true}
+  if(n>SAVE.talkXpN){const g=(n-SAVE.talkXpN)*TALK_XP,b=SAVE.lvl;SAVE.talkXpN=n;addXp(g);notify('동료와 대화',`대화 경험치 <b>+${g}</b>`,'bond');arcLvCheck(b);return true}
+  return false;
+}
+function arcDailyHTML(){
+  const d=arcDay(),ids=arcQuestIds(d.d),nq=ids.filter(id=>d.q[id]).length;
+  return `<div class="arc-day"><div class="ad-hd"><b>오늘의 휴게실</b><span>${d.first?'첫 판 보너스 받음':'첫 판 보너스 +'+ARC_FIRST}</span></div>
+    <div class="ad-xp"><span>게임 경험치</span><div class="xpbar"><i style="width:${d.xp/ARC_CAP*100}%"></i></div><em>${d.xp}/${ARC_CAP}</em></div>
+    <div class="ad-qh">오늘의 임무 <span>${nq}/3 · 각 +${ARC_QXP}, 전부 완료 시 +${ARC_ALLXP}</span></div>
+    ${ids.map(id=>{const q=ARC_QUESTS[id],v=Math.min(q.v(d),q.g),ok=d.q[id];return `<div class="ad-q ${ok?'ok':''}"><i>${ok?'✓':''}</i><b>${q.t}</b><em>${ok?'완료':q.g>=100?v+'점':v+'/'+q.g}</em></div>`}).join('')}
+  </div>`;
+}
+function arcHowHTML(){
+  const rows=[['🃏','작전 (카드 배틀)','승리 80~240 · 패배해도 30'],['📋','출근 체크','매일 한 번 · 최대 100'],['🎮','휴게실 게임','하루 최대 500 + 첫 판 30'],['✅','오늘의 휴게실 임무','개당 50 · 올클리어 50'],['💬','동료와 대화','답장할 때마다 '+TALK_XP],['🏅','업적 달성','업적마다 '+ACH_XP]];
+  return `<div class="arc-sec">경험치 얻는 방법</div><div class="arc-how">${rows.map(r=>`<div><i>${r[0]}</i><b>${r[1]}</b><em>${r[2]}</em></div>`).join('')}</div>`;
+}
+function arcResHTML(title,sub,rw){
+  const L=lvlInfo();
+  return `<div class="arc-res"><b>${title}</b><p>${sub}</p>${rw?`<div class="xpbox"><b>+${rw.xp}</b><div class="xi"><small>경험치${rw.first?' (첫 판 보너스 포함)':''}${rw.capped?' · 오늘 한도 도달':''} · Lv.${L.lvl} (${L.xp}/${L.need})</small><div class="xpbar"><i style="width:${L.xp/L.need*100}%"></i></div></div></div>`:''}</div>`;
+}
+function arcStopAll(){
+  clearInterval(msT);clearInterval(solT);
+  if(tuRaf)cancelAnimationFrame(tuRaf);tuRaf=0;if(TU&&TU.phase==='run')TU.phase='ready';
+  clearInterval(riftT);if(RF&&RF.phase==='run')riftNew();
+  clearTimeout(pairT);if(PR){PR.lock=0;PR.cards.forEach(c=>{if(!c.ok)c.up=0});PR.open=[]}
+}
+function arcHead(t,right){return `<div class="sb-sp"></div><div class="chat-hd arc-hd row">${arcBack()}<b>${t}</b>${right||'<span></span>'}</div>`}
+
+// ── 파장 튜닝
+var TU=null,tuRaf=0;
+function tuneNew(){if(tuRaf)cancelAnimationFrame(tuRaf);tuRaf=0;TU={round:0,total:10,score:0,perf:0,combo:0,phase:'ready',pos:0,dir:1,ph:0,last:null,rw:null};tuneSetup()}
+function tuneSetup(){
+  const r=TU.round;TU.w=Math.max(.09,.24-r*.016);TU.sp=.42+r*.06;
+  const h=TU.w/2+.03;TU.c=h+Math.random()*(1-2*h);
+  TU.pos=Math.random()<.5?0:1;TU.dir=TU.pos?-1:1;TU.t=0;
+}
+function tuneWave(f,ph){let d='';for(let i=0;i<=68;i++){const x=i*5,y=60+38*Math.sin((x/340)*Math.PI*2*f+ph);d+=(i?'L':'M')+x+' '+y.toFixed(1)}return d}
+const tuF=v=>1.2+v*4.2;
+function tuneDraw(){
+  const n=$('#tuNdl');if(!n)return;
+  n.style.left=(TU.pos*100)+'%';
+  const near=Math.abs(TU.pos-TU.c)<=TU.w/2;
+  $('#tuMe').setAttribute('d',tuneWave(tuF(TU.pos),TU.ph));
+  $('#tuTg').setAttribute('d',tuneWave(tuF(TU.c),TU.ph));
+  $('#tuSvg').classList.toggle('near',near);
+}
+function tuneLoop(t){
+  if(!TU||TU.phase!=='run'||curApp!=='arcade'||arcadeView!=='tune'){tuRaf=0;return}
+  const dt=TU.t?Math.min(.05,(t-TU.t)/1000):0;TU.t=t;
+  TU.pos+=TU.dir*TU.sp*dt;if(TU.pos>1){TU.pos=2-TU.pos;TU.dir=-1}if(TU.pos<0){TU.pos=-TU.pos;TU.dir=1}
+  TU.ph+=dt*2.4;tuneDraw();tuRaf=requestAnimationFrame(tuneLoop);
+}
+function tuneAct(){
+  if(!TU)return;
+  if(TU.phase==='ready'){TU.phase='run';sfx('tap');renderTune();tuRaf=requestAnimationFrame(tuneLoop);return}
+  if(TU.phase==='end'){tuneNew();renderTune();return}
+  if(TU.phase!=='run')return;
+  if(tuRaf)cancelAnimationFrame(tuRaf);tuRaf=0;
+  const dd=Math.abs(TU.pos-TU.c),hw=TU.w/2;
+  let j,p;if(dd<=hw*.3){j='PERFECT';p=100}else if(dd<=hw){j='GREAT';p=60}else if(dd<=hw+.05){j='GOOD';p=30}else{j='MISS';p=0}
+  if(j==='PERFECT'){TU.perf++;TU.combo++}else if(j==='GREAT')TU.combo++;else TU.combo=0;
+  TU.score+=p;TU.last=j;TU.phase='hit';sfx(p>=60?'unlock':p?'card':'swing');renderTune();
+  setTimeout(()=>{
+    if(!TU||TU.phase!=='hit')return;TU.round++;
+    if(TU.round>=TU.total){tuneEnd();return}
+    tuneSetup();TU.last=null;TU.phase='run';if(curApp==='arcade'&&arcadeView==='tune'){renderTune();tuRaf=requestAnimationFrame(tuneLoop)}else TU.phase='ready';
+  },850);
+}
+function tuneEnd(){
+  TU.phase='end';const m=MINI();m.tunePlays=(m.tunePlays||0)+1;if(TU.score>(m.tuneBest||0))m.tuneBest=TU.score;
+  arcEv('perf',TU.perf);arcEv('tune',TU.score,true);
+  sfx(TU.score>=600?'win':'turn');
+  TU.rw=arcReward('tune',Math.round(TU.score/25)+(TU.perf>=8?10:0),`파장 튜닝 ${TU.score}점`);
+  if(curApp==='arcade'&&arcadeView==='tune')renderTune();
+}
+function renderTune(){
+  const el=$('#arcadeApp'),T=TU,end=T.phase==='end';
+  const jc={PERFECT:'pf',GREAT:'gr',GOOD:'gd',MISS:'ms'}[T.last]||'';
+  el.innerHTML=arcHead('파장 튜닝')+`
+    <div class="ms-bar"><span>라운드 ${Math.min(T.round+1,T.total)}/${T.total}</span><span>${T.combo>1?'🔥 '+T.combo+' 콤보':''}</span><span>${T.score}점</span></div>
+    <div class="tu-wrap">
+      ${end?arcResHTML(T.score>=800?'완벽한 동조!':T.score>=600?'안정적인 파장':T.score>=300?'조금만 더':'파장이 흔들려요',`${T.score}점 · PERFECT ${T.perf}회 · 최고 ${MINI().tuneBest||0}점`,T.rw):`
+      <p class="tu-help">${T.phase==='ready'?'움직이는 <b>내 파장</b>(실선)을 목표 파장(점선)에 겹쳐 멈추세요.<br>아래 막대의 초록 구간 한가운데가 PERFECT예요.':'초록 구간 안에 바늘이 들어왔을 때 탭!'}</p>
+      <svg id="tuSvg" class="tu-svg" viewBox="0 0 340 120" preserveAspectRatio="none"><path id="tuTg" class="tg" d=""/><path id="tuMe" class="me" d=""/></svg>
+      <div class="tu-bar"><div class="tu-zone" style="left:${(T.c-T.w/2)*100}%;width:${T.w*100}%"><i style="left:35%;width:30%"></i></div><div class="tu-ndl" id="tuNdl"></div></div>
+      <div class="tu-j ${jc}">${T.last||'&nbsp;'}</div>`}
+    </div>
+    <button class="cap pri wide tu-go" id="tuGo" ${T.phase==='hit'?'disabled':''}>${T.phase==='ready'?(T.round?'이어서 하기':'시작'):T.phase==='end'?'다시 하기':'멈춰!'}</button>`;
+  bindArcBack();$('#tuGo').onclick=tuneAct;
+  const sv=$('#tuSvg');if(sv)sv.onpointerdown=e=>{e.preventDefault();if(TU.phase==='run')tuneAct()};
+  if(!end)tuneDraw();
+}
+
+// ── 동료 짝맞추기
+var PR=null,pairT=0;
+function pairNew(){clearTimeout(pairT);const crew=shuffle(CREW.filter(c=>CHARS[c])).slice(0,8);PR={cards:shuffle([...crew,...crew].map(c=>({c,up:0,ok:0}))),open:[],moves:0,t0:0,done:0,lock:0,rw:null,found:0}}
+function pairTap(i){
+  const P=PR,c=P.cards[i];if(P.done||P.lock||c.up||c.ok)return;
+  if(!P.t0)P.t0=Date.now();c.up=1;P.open.push(i);sfx('card');
+  if(P.open.length===2){
+    P.moves++;const[a,b]=P.open.map(k=>P.cards[k]);
+    if(a.c===b.c){a.ok=b.ok=1;P.open=[];P.found++;setTimeout(()=>sfx('unlock'),120);if(P.found===8)pairEnd()}
+    else{P.lock=1;pairT=setTimeout(()=>{a.up=b.up=0;P.open=[];P.lock=0;if(curApp==='arcade'&&arcadeView==='pair')renderPair()},800)}
+  }
+  renderPair();
+}
+function pairEnd(){
+  const P=PR,s=(Date.now()-P.t0)/1000|0,m=MINI();P.done=1;P.sec=s;m.pairWins=(m.pairWins||0)+1;if(!m.pairBest||P.moves<m.pairBest)m.pairBest=P.moves;
+  if(P.moves<=18)arcEv('pairOk',1);
+  setTimeout(()=>sfx('win'),300);
+  P.rw=arcReward('pair',35+(P.moves<=12?15:P.moves<=16?10:P.moves<=20?5:0),`짝맞추기 ${P.moves}번 만에 클리어`);
+}
+function renderPair(){
+  const el=$('#arcadeApp'),P=PR;
+  el.innerHTML=arcHead('동료 짝맞추기',`<button class="dk-reset" id="prNew">새 게임</button>`)+`
+    <div class="ms-bar"><span>시도 ${P.moves}</span><span>찾은 짝 ${P.found}/8</span></div>
+    <div class="pr-g">${P.cards.map((c,i)=>{const ch=CHARS[c.c];return `<button data-i="${i}" class="pr-c ${c.up||c.ok?'up':''} ${c.ok?'ok':''}"><div class="pr-in"><div class="pr-b">III</div><div class="pr-f"><span style="background:${ch.bg};font-size:${ch.av.length>2?11:14}px">${ch.av}</span><small>${ch.n}</small></div></div></button>`}).join('')}</div>
+    ${P.done?arcResHTML('전원 집합 완료!',`${P.moves}번 시도 · ${fmtSec(P.sec)} · 최소 기록 ${MINI().pairBest}번`,P.rw):`<div class="ms-msg">카드를 두 장씩 뒤집어 같은 동료를 찾아요. 적게 시도할수록 경험치가 더 많아요.</div>`}`;
+  bindArcBack();
+  $('#prNew').onclick=()=>{sfx('tap');pairNew();renderPair()};
+  el.querySelectorAll('.pr-c').forEach(b=>b.onclick=()=>pairTap(+b.dataset.i));
+}
+
+// ── 균열 봉쇄
+var RF=null,riftT=0;
+const RIFT_LEN=30000;
+function riftNew(){clearInterval(riftT);RF={phase:'ready',cells:Array(9).fill(null),score:0,combo:0,maxC:0,hits:0,miss:0,left:RIFT_LEN,next:500,rw:null,fx:{}}}
+function riftStart(){RF.phase='run';RF.t=Date.now();sfx('turn');clearInterval(riftT);riftT=setInterval(riftTick,40);renderRift()}
+function riftSpawn(prog){
+  const free=RF.cells.map((c,i)=>c?-1:i).filter(i=>i>=0);if(!free.length)return;
+  const i=free[Math.random()*free.length|0],crew=Math.random()<.2;
+  RF.cells[i]={k:crew?'c':'r',who:crew?CREW[Math.random()*CREW.length|0]:null,until:Date.now()+(crew?1500:1350-prog*600)};
+}
+function riftTick(){
+  if(curApp!=='arcade'||arcadeView!=='rift'){clearInterval(riftT);riftNew();return}
+  const now=Date.now(),dt=now-RF.t;RF.t=now;RF.left-=dt;const prog=Math.min(1,1-RF.left/RIFT_LEN);
+  RF.cells.forEach((c,i)=>{if(c&&now>c.until){if(c.k==='r'){RF.combo=0;RF.miss++}RF.cells[i]=null}});
+  RF.next-=dt;if(RF.next<=0){riftSpawn(prog);if(prog>.45&&Math.random()<.35)riftSpawn(prog);RF.next=640-prog*300+Math.random()*160}
+  if(RF.left<=0){riftEnd();return}
+  riftDraw();
+}
+function riftHit(i){
+  if(!RF||RF.phase!=='run')return;const c=RF.cells[i];if(!c)return;
+  if(c.k==='r'){RF.combo++;RF.maxC=Math.max(RF.maxC,RF.combo);RF.hits++;RF.score+=RF.combo>=5?2:1;RF.fx[i]='hit';sfx('card')}
+  else{RF.score=Math.max(0,RF.score-3);RF.combo=0;RF.fx[i]='bad';sfx('hit');const s=$('#rfG');if(s){s.classList.remove('shk');void s.offsetWidth;s.classList.add('shk')}}
+  RF.cells[i]=null;setTimeout(()=>{if(RF)delete RF.fx[i]},260);riftDraw();
+}
+function riftEnd(){
+  clearInterval(riftT);RF.phase='end';RF.left=0;RF.cells.fill(null);RF.fx={};const m=MINI();m.riftPlays=(m.riftPlays||0)+1;if(RF.score>(m.riftBest||0))m.riftBest=RF.score;
+  arcEv('rift',RF.score,true);arcEv('combo',RF.maxC,true);sfx('win');
+  RF.rw=arcReward('rift',Math.min(50,Math.round(RF.score*1.6)),`균열 봉쇄 ${RF.score}점`);
+  if(curApp==='arcade'&&arcadeView==='rift')renderRift();
+}
+function riftDraw(){
+  const g=$('#rfG');if(!g)return;
+  g.querySelectorAll('button').forEach((b,i)=>{const c=RF.cells[i],f=RF.fx[i],key=(c?c.k+(c.who||'')+c.until:'')+'|'+(f||'');
+    if(b.dataset.k===key)return;b.dataset.k=key;
+    b.className=(c?c.k==='r'?'rf-r':'rf-c':'')+(f?' fx-'+f:'');
+    if(c&&c.k==='c'){const ch=CHARS[c.who];b.innerHTML=`<span style="background:${ch.bg}">${ch.av}</span>`}else b.innerHTML=c?'<i></i>':f==='hit'?'<em>+'+(RF.combo>=5?2:1)+'</em>':f==='bad'?'<em class="m">-3</em>':'';
+  });
+  $('#rfSc').textContent=RF.score+'점';$('#rfCb').textContent=RF.combo>1?'🔥 '+RF.combo+' 콤보':'';
+  $('#rfTm').style.width=Math.max(0,RF.left/RIFT_LEN*100)+'%';$('#rfSec').textContent=Math.ceil(Math.max(0,RF.left)/1000)+'초';
+}
+function renderRift(){
+  const el=$('#arcadeApp'),F=RF;
+  el.innerHTML=arcHead('균열 봉쇄')+`
+    <div class="ms-bar"><span id="rfSec">${Math.ceil(F.left/1000)}초</span><span id="rfCb"></span><span id="rfSc">${F.score}점</span></div>
+    <div class="rf-tm"><i id="rfTm" style="width:${F.left/RIFT_LEN*100}%"></i></div>
+    <div class="rf-g" id="rfG">${F.cells.map((c,i)=>`<button data-i="${i}"></button>`).join('')}</div>
+    ${F.phase==='end'?arcResHTML(F.score>=35?'게이트 완전 봉쇄!':F.score>=20?'구역 안정화 성공':'균열이 조금 남았어요',`${F.score}점 · 봉쇄 ${F.hits}회 · 최대 ${F.maxC}콤보 · 최고 ${MINI().riftBest||0}점`,F.rw):`<div class="ms-msg">${F.phase==='ready'?'보라색 <b>균열</b>이 열리면 재빨리 터치해 봉쇄하세요.<br>동료 얼굴은 누르면 -3점! 5콤보부터는 2점씩.':'균열만 터치! 동료는 피하세요.'}</div>`}
+    ${F.phase==='run'?'':`<button class="cap pri wide tu-go" id="rfGo">${F.phase==='end'?'다시 하기':'시작'}</button>`}`;
+  bindArcBack();
+  el.querySelectorAll('#rfG button').forEach(b=>b.onpointerdown=e=>{e.preventDefault();riftHit(+b.dataset.i)});
+  const go=$('#rfGo');if(go)go.onclick=()=>{if(RF.phase==='end')riftNew();riftStart()};
+  riftDraw();
+}
+
+// ── 파장 증폭 2048
+var GZ=null;
+function g2048New(){GZ={b:Array(16).fill(0),score:0,over:0,claimed:0,rw:null,nw:-1,mg:[]};gzAdd();gzAdd();GZ.nw=-1}
+function gzAdd(){const e=GZ.b.map((v,i)=>v?-1:i).filter(i=>i>=0);if(!e.length)return;const i=e[Math.random()*e.length|0];GZ.b[i]=Math.random()<.9?2:4;GZ.nw=i}
+function gzCanMove(){const b=GZ.b;for(let i=0;i<16;i++){if(!b[i])return true;if(i%4<3&&b[i]===b[i+1])return true;if(i<12&&b[i]===b[i+4])return true}return false}
+function gzMove(dir){ // 0← 1→ 2↑ 3↓
+  if(!GZ||GZ.over||GZ.claimed)return;
+  let moved=false;GZ.mg=[];
+  for(let k=0;k<4;k++){
+    let idx=dir<2?[0,1,2,3].map(j=>k*4+j):[0,1,2,3].map(j=>j*4+k);if(dir===1||dir===3)idx.reverse();
+    const v=idx.map(i=>GZ.b[i]).filter(Boolean),out=[];
+    for(let j=0;j<v.length;j++){if(v[j]===v[j+1]){out.push(v[j]*2);GZ.score+=v[j]*2;GZ.mg.push(idx[out.length-1]);j++}else out.push(v[j])}
+    while(out.length<4)out.push(0);
+    idx.forEach((i,j)=>{if(GZ.b[i]!==out[j])moved=true;GZ.b[i]=out[j]});
+  }
+  if(!moved)return;
+  gzAdd();sfx(GZ.mg.length?'unlock':'card');
+  const mx=Math.max(...GZ.b),m=MINI();if(mx>(m.g2048Tile||0))m.g2048Tile=mx;
+  if(!gzCanMove()){GZ.over=1;gzSettle()}
+  renderG2048();
+}
+function gzSettle(){
+  if(GZ.claimed)return;
+  if(GZ.score<100&&!GZ.over){notify('휴게실','100점 이상부터 정산할 수 있어요','center');return}
+  GZ.claimed=1;const mx=Math.max(...GZ.b),m=MINI();if(GZ.score>(m.g2048Best||0))m.g2048Best=GZ.score;
+  arcEv('tile',mx,true);sfx('win');
+  GZ.rw=GZ.score>=100?arcReward('g2048',Math.min(80,Math.floor(GZ.score/40))+(mx>=2048?40:0),`2048 ${GZ.score}점`):null;
+  save();renderG2048();
+}
+const GZ_COL={2:['#3a3a3c','#fff'],4:['#48484a','#fff'],8:['#0a84ff','#fff'],16:['#30d5c8','#00201d'],32:['#30d158','#002a0c'],64:['#ffd60a','#2a2200'],128:['#ff9f0a','#2a1400'],256:['#ff6b5e','#2a0503'],512:['#ff375f','#fff'],1024:['#bf5af2','#fff'],2048:['#fff','#7a1fa2']};
+function renderG2048(){
+  const el=$('#arcadeApp'),Z=GZ,mx=Math.max(...Z.b),m=MINI();
+  el.innerHTML=arcHead('파장 증폭 2048',`<button class="dk-reset" id="gzNew">새 게임</button>`)+`
+    <div class="ms-bar"><span>${Z.score}점</span><span>최대 ${mx}</span><span>최고 ${Math.max(m.g2048Best||0,Z.claimed?0:Z.score)}</span></div>
+    <div class="gz-b" id="gzB">${Z.b.map((v,i)=>{const c=GZ_COL[v]||['#fff','#000'];return `<div class="gz-t ${v?'':'e'} ${i===Z.nw?'nw':''} ${Z.mg.includes(i)?'mg':''}" style="${v?`background:${c[0]};color:${c[1]};font-size:${v>=1024?22:v>=128?26:30}px`:''}">${v||''}</div>`}).join('')}
+      ${Z.claimed||Z.over?`<div class="gz-ov">${arcResHTML(Z.over?'더 이상 움직일 수 없어요':'정산 완료',`${Z.score}점 · 최대 타일 ${mx}`,Z.rw)}</div>`:''}</div>
+    <div class="ms-msg">밀어서(또는 방향키) 같은 숫자를 합쳐요. 점수 40점마다 경험치 1 (최대 80).</div>
+    ${Z.claimed||Z.over?`<button class="cap pri wide tu-go" id="gzAgain">다시 하기</button>`:`<button class="cap sec wide tu-go" id="gzEnd">여기서 정산하기</button>`}`;
+  bindArcBack();
+  $('#gzNew').onclick=()=>{sfx('tap');g2048New();renderG2048()};
+  const a=$('#gzAgain');if(a)a.onclick=()=>{sfx('tap');g2048New();renderG2048()};
+  const e=$('#gzEnd');if(e)e.onclick=()=>{sfx('tap');gzSettle()};
+  const bd=$('#gzB');let sx=0,sy=0,dn=false;
+  bd.onpointerdown=ev=>{dn=true;sx=ev.clientX;sy=ev.clientY;try{bd.setPointerCapture(ev.pointerId)}catch(_){}};
+  bd.onpointerup=ev=>{if(!dn)return;dn=false;const dx=ev.clientX-sx,dy=ev.clientY-sy;if(Math.max(Math.abs(dx),Math.abs(dy))<22)return;gzMove(Math.abs(dx)>Math.abs(dy)?(dx<0?0:1):(dy<0?2:3))};
+  bd.onpointercancel=()=>{dn=false};
+}
+document.addEventListener('keydown',e=>{
+  if(curApp!=='arcade')return;const t=e.target;if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable))return;
+  if(arcadeView==='g2048'){const d={ArrowLeft:0,ArrowRight:1,ArrowUp:2,ArrowDown:3}[e.key];if(d!=null){e.preventDefault();gzMove(d)}}
+  else if(arcadeView==='tune'&&(e.key===' '||e.key==='Enter')){e.preventDefault();if(TU&&TU.phase!=='hit')tuneAct()}
+});
+
+// 업적 추가
+ACH.push(
+  {g:'일상',id:'tune',n:'완벽한 동조',t:'파장 조율사',d:'파장 튜닝 800점 이상',ok:()=>(MINI().tuneBest||0)>=800},
+  {g:'일상',id:'pair',n:'동료 얼굴 외우기',t:'인사 담당관',d:'동료 짝맞추기 클리어',ok:()=>(MINI().pairWins||0)>=1},
+  {g:'일상',id:'rift',n:'균열 봉쇄 전문가',t:'게이트 키퍼',d:'균열 봉쇄 35점 이상',ok:()=>(MINI().riftBest||0)>=35},
+  {g:'일상',id:'g2048',n:'파장 증폭',t:'증폭기',d:'2048에서 512 타일 만들기',ok:()=>(MINI().g2048Tile||0)>=512},
+  {g:'일상',id:'arcq',n:'휴게실 단골',t:'휴게실 단골',d:'오늘의 휴게실 임무 올클리어',ok:()=>!!(MINI().day&&MINI().day.all)||!!MINI().allEver},
+);
+
 </script>
 </body>
 </html>
